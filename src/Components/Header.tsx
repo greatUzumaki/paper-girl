@@ -1,9 +1,4 @@
-import {
-  AppBar,
-  Container,
-  Toolbar,
-  Typography
-} from '@mui/material';
+import { AppBar, Container, Toolbar, Typography } from '@mui/material';
 import { Box } from '@mui/system';
 import Lottie from 'lottie-react';
 import React, { useEffect, useMemo, useState } from 'react';
@@ -60,7 +55,7 @@ const Header = () => {
       <AppBar
         position='fixed'
         className={classes.root}
-        sx={{ backgroundColor: colors.bgColor, transition: 'all .3s' }}
+        sx={{ backgroundColor: colors.bgColor, transition: 'all .4s' }}
       >
         {/* <div className={classes.img}>
           <Anim />

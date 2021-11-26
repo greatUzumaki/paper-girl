@@ -17,7 +17,7 @@ const useStyles = createUseStyles({
   },
   root: {
     display: 'flex !important',
-    minHeight: 500,
+    minHeight: 600,
     alignItems: 'center',
   },
   title: {

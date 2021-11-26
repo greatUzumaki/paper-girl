@@ -27,8 +27,31 @@ const useStyles = createUseStyles({
     display: 'flex',
     flexWrap: 'wrap',
     paddingBottom: 50,
+    justifyContent: 'space-between',
+    '@media(max-width: 1200px)': {
+      justifyContent: 'center',
+    },
   },
 });
+
+const games = [
+  {
+    title: 'Game 1',
+    price: '1999.99',
+  },
+  {
+    title: 'Game 1',
+    price: '1999.99',
+  },
+  {
+    title: 'Game 1',
+    price: '1999.99',
+  },
+  {
+    title: 'Game 1',
+    price: '1999.99',
+  },
+];
 
 const FreeGames = () => {
   const classes = useStyles();
@@ -45,7 +68,9 @@ const FreeGames = () => {
           Активные раздачи
         </Typography>
         <Box className={classes.box}>
-          <GCard />
+          {games.map((game, index) => {
+            return <GCard price={game.price} title={game.title} key={index} />;
+          })}
         </Box>
       </Container>
     </div>
