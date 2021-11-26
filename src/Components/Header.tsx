@@ -10,6 +10,8 @@ import React, { useEffect, useMemo, useState } from 'react';
 import { createUseStyles } from 'react-jss';
 import { mainBlack, mainPink } from '../Configs/colors';
 import { subtitle } from '../Configs/randomText';
+import Lottie from 'lottie-react';
+import Lines from '../Images/lines.json';
 
 const RADIUS = 15;
 
@@ -17,13 +19,22 @@ const useStyles = createUseStyles({
   root: {
     borderBottomLeftRadius: RADIUS,
     borderBottomRightRadius: RADIUS,
+    position: 'relative',
   },
   container: {
     display: 'flex',
     alignItems: 'flex-end',
     gap: 10,
   },
+  img: {
+    position: 'absolute',
+    opacity: '0.5',
+  },
 });
+
+const Anim = () => {
+  return <Lottie animationData={Lines} />;
+};
 
 const Header = () => {
   const classes = useStyles();
@@ -52,6 +63,9 @@ const Header = () => {
         className={classes.root}
         sx={{ backgroundColor: colors.bgColor, transition: 'all .3s' }}
       >
+        {/* <div className={classes.img}>
+          <Anim />
+        </div> */}
         <Container>
           <Toolbar sx={{ paddingInline: '0px !important' }}>
             <Box className={classes.container}>

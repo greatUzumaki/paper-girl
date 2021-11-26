@@ -1,5 +1,7 @@
 import React from 'react';
 import { createUseStyles } from 'react-jss';
+import Hero from '../Components/Hero';
+import Links from '../Components/Links';
 import { mainBlack } from '../Configs/colors';
 
 const useStyles = createUseStyles({
@@ -11,7 +13,12 @@ const useStyles = createUseStyles({
 
 const Home = () => {
   const classes = useStyles();
-  return <div className={classes.root}></div>;
+  return (
+    <div className={classes.root}>
+      <Hero />
+      <Links />
+    </div>
+  );
 };
 
 export default Home;
