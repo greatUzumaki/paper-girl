@@ -1,5 +1,6 @@
 import React from 'react';
 import { createUseStyles } from 'react-jss';
+import FreeGames from '../Components/FreeGames';
 import Hero from '../Components/Hero';
 import Links from '../Components/Links';
 import { mainBlack } from '../Configs/colors';
@@ -17,6 +18,7 @@ const Home = () => {
     <div className={classes.root}>
       <Hero />
       <Links />
+      <FreeGames />
     </div>
   );
 };

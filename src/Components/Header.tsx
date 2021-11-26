@@ -2,15 +2,14 @@ import {
   AppBar,
   Container,
   Toolbar,
-  Typography,
-  useScrollTrigger,
+  Typography
 } from '@mui/material';
 import { Box } from '@mui/system';
+import Lottie from 'lottie-react';
 import React, { useEffect, useMemo, useState } from 'react';
 import { createUseStyles } from 'react-jss';
 import { mainBlack, mainPink } from '../Configs/colors';
 import { subtitle } from '../Configs/randomText';
-import Lottie from 'lottie-react';
 import Lines from '../Images/lines.json';
 
 const RADIUS = 15;

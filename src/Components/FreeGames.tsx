@@ -3,8 +3,7 @@ import { Box } from '@mui/system';
 import React from 'react';
 import { createUseStyles } from 'react-jss';
 import { mainPink } from '../Configs/colors';
-import Telegram from '../Images/telegram.png';
-import Discrod from '../Images/discord.png';
+import GCard from './GCard';
 
 const useStyles = createUseStyles({
   root: {
@@ -27,23 +26,11 @@ const useStyles = createUseStyles({
   box: {
     display: 'flex',
     flexWrap: 'wrap',
-    justifyContent: 'space-evenly',
-    paddingBottom: 50,
-  },
-  icon: {
-    width: 250,
-    '@media(max-width: 900px)': {
-      width: 230,
-    },
-    '&:hover': {
-      transform: 'scale(1.2) rotate(6deg)',
-    },
-    transition: 'all .3s',
     paddingBottom: 50,
   },
 });
 
-const Links = () => {
+const FreeGames = () => {
   const classes = useStyles();
 
   return (
@@ -55,27 +42,14 @@ const Links = () => {
           sx={{ fontWeight: 600 }}
           variant='h3'
         >
-          Оформите подписку
+          Активные раздачи
         </Typography>
         <Box className={classes.box}>
-          <a
-            href='https://t.me/Paper_Girl_Bot'
-            target='_blank'
-            rel='noreferrer'
-          >
-            <img src={Discrod} className={classes.icon} alt='discord' />
-          </a>
-          <a
-            href='https://t.me/Paper_Girl_Bot'
-            target='_blank'
-            rel='noreferrer'
-          >
-            <img src={Telegram} className={classes.icon} alt='telegram' />
-          </a>
+          <GCard />
         </Box>
       </Container>
     </div>
   );
 };
 
-export default Links;
+export default FreeGames;

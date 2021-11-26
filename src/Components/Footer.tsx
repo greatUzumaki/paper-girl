@@ -12,6 +12,7 @@ const useStyles = createUseStyles({
   container: {
     display: 'flex !important',
     paddingTop: 30,
+    flexWrap: 'wrap',
   },
   box1: { display: 'flex', flexDirection: 'column', flexGrow: 1 },
   box2: { display: 'flex', flexDirection: 'column', width: 200 },
