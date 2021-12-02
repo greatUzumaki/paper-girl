@@ -4,6 +4,7 @@ import React from 'react';
 import { createUseStyles } from 'react-jss';
 import { mainPink } from '../Configs/colors';
 import GCard from './GCard';
+import Fade from 'react-reveal/Fade';
 
 const useStyles = createUseStyles({
   root: {
@@ -67,11 +68,15 @@ const FreeGames = () => {
         >
           Активные раздачи
         </Typography>
-        <Box className={classes.box}>
-          {games.map((game, index) => {
-            return <GCard price={game.price} title={game.title} key={index} />;
-          })}
-        </Box>
+        <Fade bottom cascade>
+          <Box className={classes.box}>
+            {games.map((game, index) => {
+              return (
+                <GCard price={game.price} title={game.title} key={index} />
+              );
+            })}
+          </Box>
+        </Fade>
       </Container>
     </div>
   );

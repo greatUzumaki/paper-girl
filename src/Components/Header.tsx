@@ -1,11 +1,9 @@
 import { AppBar, Container, Toolbar, Typography } from '@mui/material';
 import { Box } from '@mui/system';
-import Lottie from 'lottie-react';
 import React, { useEffect, useMemo, useState } from 'react';
 import { createUseStyles } from 'react-jss';
 import { mainBlack, mainPink } from '../Configs/colors';
 import { subtitle } from '../Configs/randomText';
-import Lines from '../Images/lines.json';
 
 const RADIUS = 15;
 
@@ -14,6 +12,7 @@ const useStyles = createUseStyles({
     borderBottomLeftRadius: RADIUS,
     borderBottomRightRadius: RADIUS,
     position: 'relative',
+    opacity: 0.9,
   },
   container: {
     display: 'flex',
@@ -25,10 +24,6 @@ const useStyles = createUseStyles({
     opacity: '0.5',
   },
 });
-
-const Anim = () => {
-  return <Lottie animationData={Lines} />;
-};
 
 const Header = () => {
   const classes = useStyles();
