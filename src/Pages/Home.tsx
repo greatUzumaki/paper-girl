@@ -1,5 +1,6 @@
 import React from 'react';
 import { createUseStyles } from 'react-jss';
+import { AD } from '../Components/AD';
 import FreeGames from '../Components/FreeGames';
 import Hero from '../Components/Hero';
 import Links from '../Components/Links';
@@ -19,6 +20,7 @@ const Home = () => {
       <Hero />
       <Links />
       <FreeGames />
+      <AD />
     </div>
   );
 };

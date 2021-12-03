@@ -3,9 +3,8 @@ import { Box } from '@mui/system';
 import React from 'react';
 import { createUseStyles } from 'react-jss';
 import { mainPink } from '../Configs/colors';
-import Telegram from '../Images/telegram.png';
 import Discrod from '../Images/discord.png';
-import Prev from '../Images/prev.jpg';
+import Telegram from '../Images/telegram.png';
 
 const useStyles = createUseStyles({
   root: {
@@ -29,7 +28,9 @@ const useStyles = createUseStyles({
   or: { color: mainPink, textShadow: '0 0px 10px black' },
   box: {
     display: 'flex',
-    flexWrap: 'wrap',
+    '@media(max-width: 900px)': {
+      flexWrap: 'wrap',
+    },
     justifyContent: 'space-between',
     alignItems: 'center',
   },
@@ -61,7 +62,7 @@ const Links = () => {
   const classes = useStyles();
 
   return (
-    <div className={classes.root}>
+    <div className={classes.root} id='links'>
       <Container className={classes.container}>
         <Typography
           align='center'
