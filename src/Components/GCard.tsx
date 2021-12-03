@@ -2,21 +2,24 @@ import { Paper, Typography } from '@mui/material';
 import React from 'react';
 import { createUseStyles } from 'react-jss';
 import { IGCard } from '../Configs/interfaces';
+import dateFormat from 'dateformat';
+import { Box } from '@mui/system';
 
 const useStyles = createUseStyles({
   card: {
-    display: 'flex',
-    flexDirection: 'column',
-    width: 220,
-    height: 300,
+    width: 345,
+    height: 210,
     backgroundColor: 'white',
-    marginBottom: 70,
+    marginBottom: 60,
     '&:hover': {
       transform: 'scale(105%)',
+      '& $container': {
+        top: 0,
+      },
     },
     transition: 'all .3s !important',
     textDecoration: 'none',
-    padding: 15,
+    overflow: 'hidden',
   },
   price: {
     alignSelf: 'flex-end',
@@ -27,20 +30,62 @@ const useStyles = createUseStyles({
     paddingBlock: 5,
     textDecoration: 'line-through',
   },
+  container: {
+    display: 'flex',
+    flexDirection: 'column',
+    backgroundColor: 'rgba(0,0,0,0.8)',
+    position: 'relative',
+    top: 140,
+    height: '100%',
+    transition: 'all .2s',
+  },
+  title: {
+    color: 'white',
+    fontWeight: '600 !important',
+    flexGrow: 1,
+    padding: 10,
+  },
+  datePriceContainer: {
+    padding: 10,
+    display: 'flex',
+    alignItems: 'center',
+  },
 });
 
-const GCard = (props: IGCard) => {
+const GCard = () => {
   const classes = useStyles();
 
   return (
-    <Paper component='a' href='#' className={classes.card} elevation={5}>
-      <Typography sx={{ flexGrow: 1 }}>{props.title}</Typography>
-      <Typography
-        className={classes.price}
-        sx={{ fontWeight: 600, fontSize: 14 }}
-      >
-        {props.price} ₽
-      </Typography>
+    <Paper
+      component='a'
+      target='_blank'
+      href='#'
+      className={classes.card}
+      sx={{
+        backgroundImage:
+          'url(https://cdn1.epicgames.com/salesEvent/salesEvent/EGS_PaladinsEpicPack_EvilMojoGames_AddOn_S1_2560x1440-8a274ee54c18954d697e065b5eb79e68)',
+        backgroundSize: 'cover',
+      }}
+      elevation={5}
+    >
+      <Box className={classes.container}>
+        <Typography className={classes.title}>
+          Stubbs the Zombie in Rebel Without a Pulse
+        </Typography>
+
+        <Box className={classes.datePriceContainer}>
+          <Typography sx={{ flexGrow: 1, color: 'gray' }}>
+            {dateFormat('2021-10-18T15:00:00.000Z', 'dd.mm')}
+          </Typography>
+
+          <Typography
+            className={classes.price}
+            sx={{ fontWeight: 600, fontSize: 14 }}
+          >
+            1999 ₽
+          </Typography>
+        </Box>
+      </Box>
     </Paper>
   );
 };

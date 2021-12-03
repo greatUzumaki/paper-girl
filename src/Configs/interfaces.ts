@@ -1,4 +1,5 @@
+import { GameType } from './types';
+
 export interface IGCard {
-  title: string;
-  price: string;
+  gameData: GameType;
 }

@@ -1,10 +1,11 @@
 import { Container, Typography } from '@mui/material';
 import { Box } from '@mui/system';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { createUseStyles } from 'react-jss';
 import { mainPink } from '../Configs/colors';
 import GCard from './GCard';
 import Fade from 'react-reveal/Fade';
+import { GameType } from '../Configs/types';
 
 const useStyles = createUseStyles({
   root: {
@@ -56,6 +57,14 @@ const games = [
 
 const FreeGames = () => {
   const classes = useStyles();
+  const [allGames, setAllGames] = useState<GameType[]>([]);
+
+  useEffect(() => {
+    fetch('https://complimentr.com/api')
+      .then((response) => response.json())
+      .then((result) => console.log(result.compliment))
+      .catch((e) => console.log(e));
+  }, []);
 
   return (
     <div className={classes.root}>
@@ -71,9 +80,7 @@ const FreeGames = () => {
         <Fade bottom cascade>
           <Box className={classes.box}>
             {games.map((game, index) => {
-              return (
-                <GCard price={game.price} title={game.title} key={index} />
-              );
+              return <GCard key={index} />;
             })}
           </Box>
         </Fade>
