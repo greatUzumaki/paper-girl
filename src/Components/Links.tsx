@@ -30,6 +30,7 @@ const useStyles = createUseStyles({
     display: 'flex',
     '@media(max-width: 900px)': {
       flexWrap: 'wrap',
+      justifyContent: 'center',
     },
     justifyContent: 'space-between',
     alignItems: 'center',
@@ -75,7 +76,7 @@ const Links = () => {
         <Box className={classes.box}>
           <Box className={classes.discord}>
             <a
-              href='https://t.me/Paper_Girl_Bot'
+              href='https://discord.com/api/oauth2/authorize?client_id=878197161005809664&permissions=67584&scope=bot'
               target='_blank'
               rel='noreferrer'
             >

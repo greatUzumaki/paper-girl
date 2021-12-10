@@ -29,40 +29,21 @@ const useStyles = createUseStyles({
     display: 'flex',
     flexWrap: 'wrap',
     paddingBottom: 50,
-    justifyContent: 'space-between',
+    justifyContent: 'space-around',
     '@media(max-width: 1200px)': {
       justifyContent: 'center',
     },
   },
 });
 
-const games = [
-  {
-    title: 'Game 1',
-    price: '1999.99',
-  },
-  {
-    title: 'Game 1',
-    price: '1999.99',
-  },
-  {
-    title: 'Game 1',
-    price: '1999.99',
-  },
-  {
-    title: 'Game 1',
-    price: '1999.99',
-  },
-];
-
 const FreeGames = () => {
   const classes = useStyles();
   const [allGames, setAllGames] = useState<GameType[]>([]);
 
   useEffect(() => {
-    fetch('https://complimentr.com/api')
+    fetch('https://pipergirl.devhtw.ru/api/freegames')
       .then((response) => response.json())
-      .then((result) => console.log(result.compliment))
+      .then((result) => setAllGames(result))
       .catch((e) => console.log(e));
   }, []);
 
@@ -79,8 +60,8 @@ const FreeGames = () => {
         </Typography>
         <Fade bottom cascade>
           <Box className={classes.box}>
-            {games.map((game, index) => {
-              return <GCard key={index} />;
+            {allGames.map((game, index) => {
+              return <GCard key={index} gameData={game} />;
             })}
           </Box>
         </Fade>

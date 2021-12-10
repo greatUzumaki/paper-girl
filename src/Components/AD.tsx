@@ -39,7 +39,7 @@ export const AD = () => {
   const [visible, setVisible] = useState(false);
 
   const toggleScroll = () => {
-    if (window.scrollY > 1200) {
+    if (window.scrollY > 500) {
       setVisible(true);
       document.removeEventListener('scroll', toggleScroll);
     }

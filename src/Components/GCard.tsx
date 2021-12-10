@@ -16,6 +16,9 @@ const useStyles = createUseStyles({
       '& $container': {
         top: 0,
       },
+      '& $desc': {
+        display: 'block',
+      },
     },
     transition: 'all .3s !important',
     textDecoration: 'none',
@@ -42,47 +45,67 @@ const useStyles = createUseStyles({
   title: {
     color: 'white',
     fontWeight: '600 !important',
-    flexGrow: 1,
     padding: 10,
+    flexGrow: 1,
+    fontSize: '19px !important',
   },
   datePriceContainer: {
     padding: 10,
     display: 'flex',
     alignItems: 'center',
   },
+  desc: {
+    color: 'white',
+    flexGrow: 1,
+    padding: 10,
+    display: 'none',
+  },
 });
 
-const GCard = () => {
+const GCard = (props: IGCard) => {
   const classes = useStyles();
 
   return (
     <Paper
       component='a'
       target='_blank'
-      href='#'
+      href={props.gameData.url}
       className={classes.card}
       sx={{
-        backgroundImage:
-          'url(https://cdn1.epicgames.com/salesEvent/salesEvent/EGS_PaladinsEpicPack_EvilMojoGames_AddOn_S1_2560x1440-8a274ee54c18954d697e065b5eb79e68)',
+        backgroundImage: `url(${props.gameData.logo})`,
         backgroundSize: 'cover',
       }}
       elevation={5}
     >
       <Box className={classes.container}>
         <Typography className={classes.title}>
-          Stubbs the Zombie in Rebel Without a Pulse
+          {props.gameData.title}
         </Typography>
 
+        <Box>
+          <Typography className={classes.desc}>
+            {props.gameData.description.length > 110
+              ? props.gameData.description.slice(0, 100) + '...'
+              : props.gameData.description}
+          </Typography>
+        </Box>
+
         <Box className={classes.datePriceContainer}>
-          <Typography sx={{ flexGrow: 1, color: 'gray' }}>
-            {dateFormat('2021-10-18T15:00:00.000Z', 'dd.mm')}
+          <Typography sx={{ flexGrow: 1, color: 'gray', fontWeight: 600 }}>
+            {dateFormat(props.gameData.promotions.startDate, 'dd.mm')}-
+            {dateFormat(props.gameData.promotions.endDate, 'dd.mm')}
           </Typography>
 
           <Typography
             className={classes.price}
-            sx={{ fontWeight: 600, fontSize: 14 }}
+            sx={{
+              fontWeight: 600,
+              fontSize: 14,
+              display:
+                props.gameData.price.originalPrice === 0 ? 'none' : 'block',
+            }}
           >
-            1999 ₽
+            {props.gameData.price.originalPrice / 100} ₽
           </Typography>
         </Box>
       </Box>

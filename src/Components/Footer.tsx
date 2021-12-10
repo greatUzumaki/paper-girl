@@ -9,6 +9,9 @@ const useStyles = createUseStyles({
   root: {
     backgroundColor: mainPink,
     height: 300,
+    '@media(max-width: 900px)': {
+      height: 450,
+    },
     position: 'relative',
     overflow: 'hidden',
   },
@@ -50,6 +53,10 @@ const useStyles = createUseStyles({
     transition: 'all .2s linear',
     cursor: 'pointer',
   },
+  link: {
+    textDecoration: 'none',
+    color: 'black',
+  },
 });
 
 const Footer = () => {
@@ -70,10 +77,27 @@ const Footer = () => {
           </Typography>
         </Box>
         <Box className={classes.box2}>
-          <Typography sx={{ fontWeight: 600 }}>Контакты</Typography>
+          <Typography sx={{ fontWeight: 600, marginBottom: 2 }}>
+            Контакты
+          </Typography>
+          <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+            <Typography sx={{ fontWeight: 400 }}>@nervestopheles</Typography>
+            <Typography sx={{ fontWeight: 400 }}>@apargachev</Typography>
+            <Typography sx={{ fontWeight: 400 }}>@isSabuhi</Typography>
+          </Box>
         </Box>
         <Box className={classes.box3}>
-          <Typography sx={{ fontWeight: 600 }}>Ссылки</Typography>
+          <Typography sx={{ fontWeight: 600, marginBottom: 2 }}>
+            Ссылки
+          </Typography>
+          <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+            <a href='#' className={classes.link} target='_blank'>
+              Discord
+            </a>
+            <a href='#' className={classes.link} target='_blank'>
+              Telegram
+            </a>
+          </Box>
         </Box>
       </Container>
       <img className={classes.img} src={Face} alt='face' />
