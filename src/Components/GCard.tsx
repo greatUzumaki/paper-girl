@@ -7,8 +7,7 @@ import { Box } from '@mui/system';
 
 const useStyles = createUseStyles({
   card: {
-    width: 345,
-    height: 210,
+    height: 230,
     backgroundColor: 'white',
     marginBottom: 60,
     '&:hover': {
@@ -38,7 +37,7 @@ const useStyles = createUseStyles({
     flexDirection: 'column',
     backgroundColor: 'rgba(0,0,0,0.8)',
     position: 'relative',
-    top: 140,
+    top: 170,
     height: '100%',
     transition: 'all .2s',
   },
@@ -72,8 +71,13 @@ const GCard = (props: IGCard) => {
       href={props.gameData.url}
       className={classes.card}
       sx={{
-        backgroundImage: `url(${props.gameData.logo})`,
+        backgroundImage: `url(${
+          !Array.isArray(props.gameData.logo)
+            ? props.gameData.logo
+            : props.gameData.logo[props.gameData.logo.length - 1].url
+        })`,
         backgroundSize: 'cover',
+        width: props.size,
       }}
       elevation={5}
     >

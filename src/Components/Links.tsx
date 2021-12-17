@@ -3,6 +3,7 @@ import { Box } from '@mui/system';
 import React from 'react';
 import { createUseStyles } from 'react-jss';
 import { mainPink } from '../Configs/colors';
+import { discordLink, telegramLink } from '../Configs/links';
 import Discrod from '../Images/discord.png';
 import Telegram from '../Images/telegram.png';
 
@@ -75,11 +76,7 @@ const Links = () => {
         </Typography>
         <Box className={classes.box}>
           <Box className={classes.discord}>
-            <a
-              href='https://discord.com/api/oauth2/authorize?client_id=878197161005809664&permissions=67584&scope=bot'
-              target='_blank'
-              rel='noreferrer'
-            >
+            <a href={discordLink} target='_blank' rel='noreferrer'>
               <img src={Discrod} className={classes.icon} alt='discord' />
             </a>
           </Box>
@@ -91,11 +88,7 @@ const Links = () => {
             ИЛИ
           </Typography>
           <Box className={classes.discord}>
-            <a
-              href='https://t.me/Paper_Girl_Bot'
-              target='_blank'
-              rel='noreferrer'
-            >
+            <a href={telegramLink} target='_blank' rel='noreferrer'>
               <img src={Telegram} className={classes.icon} alt='telegram' />
             </a>
           </Box>

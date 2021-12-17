@@ -1,4 +1,4 @@
-import { Container, Typography } from '@mui/material';
+import { CircularProgress, Container, Slider, Typography } from '@mui/material';
 import { Box } from '@mui/system';
 import React, { useEffect, useState } from 'react';
 import { createUseStyles } from 'react-jss';
@@ -22,7 +22,8 @@ const useStyles = createUseStyles({
   },
   title: {
     color: mainPink,
-    paddingBlock: 70,
+    paddingTop: 70,
+    paddingBottom: 30,
     textShadow: '0 0px 10px black',
   },
   box: {
@@ -34,18 +35,37 @@ const useStyles = createUseStyles({
       justifyContent: 'center',
     },
   },
+  slider: {
+    display: 'flex',
+    paddingBottom: 30,
+    position: 'sticky',
+    top: 64,
+    borderRadius: 0,
+    zIndex: 999,
+    justifyContent: 'flex-end',
+    '@media(max-width: 900px)': {
+      display: 'none',
+    },
+  },
 });
 
 const FreeGames = () => {
   const classes = useStyles();
   const [allGames, setAllGames] = useState<GameType[]>([]);
+  const [size, setSize] = useState(340);
+  const [load, setLoad] = useState(true);
 
   useEffect(() => {
     fetch('https://pipergirl.devhtw.ru/api/freegames')
       .then((response) => response.json())
       .then((result) => setAllGames(result))
+      .then(() => setLoad(false))
       .catch((e) => console.log(e));
   }, []);
+
+  const handleChange = (event: Event, newValue: number | number[]) => {
+    setSize(newValue as number);
+  };
 
   return (
     <div className={classes.root}>
@@ -58,11 +78,37 @@ const FreeGames = () => {
         >
           Активные раздачи
         </Typography>
+        <Box className={classes.slider}>
+          <div
+            style={{
+              backgroundColor: 'rgba(18,18,18,0.5)',
+              paddingInline: 20,
+              borderRadius: 5,
+            }}
+          >
+            <Slider
+              sx={{
+                width: 200,
+              }}
+              aria-label='Рзамер блоков'
+              color='secondary'
+              value={size}
+              onChange={handleChange}
+              min={300}
+              max={600}
+              step={15}
+            />
+          </div>
+        </Box>
         <Fade bottom cascade>
           <Box className={classes.box}>
-            {allGames.map((game, index) => {
-              return <GCard key={index} gameData={game} />;
-            })}
+            {load ? (
+              <CircularProgress />
+            ) : (
+              allGames.map((game, index) => {
+                return <GCard key={index} gameData={game} size={size} />;
+              })
+            )}
           </Box>
         </Fade>
       </Container>

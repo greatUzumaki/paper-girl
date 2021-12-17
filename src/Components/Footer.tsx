@@ -3,6 +3,7 @@ import { Box } from '@mui/system';
 import React from 'react';
 import { createUseStyles } from 'react-jss';
 import { mainPink } from '../Configs/colors';
+import { discordLink, telegramLink } from '../Configs/links';
 import Face from '../Images/face.png';
 
 const useStyles = createUseStyles({
@@ -56,6 +57,9 @@ const useStyles = createUseStyles({
   link: {
     textDecoration: 'none',
     color: 'black',
+    '&:hover': {
+      textDecoration: 'underline',
+    },
   },
 });
 
@@ -91,10 +95,20 @@ const Footer = () => {
             Ссылки
           </Typography>
           <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
-            <a href='#' className={classes.link} target='_blank'>
+            <a
+              href={discordLink}
+              className={classes.link}
+              target='_blank'
+              rel='noreferrer'
+            >
               Discord
             </a>
-            <a href='#' className={classes.link} target='_blank'>
+            <a
+              href={telegramLink}
+              className={classes.link}
+              target='_blank'
+              rel='noreferrer'
+            >
               Telegram
             </a>
           </Box>
